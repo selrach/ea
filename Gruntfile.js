@@ -164,7 +164,7 @@ module.exports = function (grunt) {
           xl: 'screen and (min-width: 80em)'    // 1280px
         }
       }
-    }
+    },
 
     // Add vendor prefixed styles
     autoprefixer: {
