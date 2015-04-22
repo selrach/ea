@@ -1,0 +1,26 @@
+{
+  "genre": [
+    "action",
+    "shooting",
+    "horror",
+    "unknown"
+  ],
+  "platform": [
+    "pc",
+    "mobile",
+    "xbox",
+    "playstation"
+  ],
+  "franchise": [
+    "fifa",
+    "sims",
+    "madden",
+    "dragon-age",
+    "hasbro",
+    "nfs",
+    "battlefield",
+    "hockey",
+    "deadspace"
+  ],
+  "other": []
+}
