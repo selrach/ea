@@ -158,11 +158,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gamelist.json" pinned="false" current-in-tab="true">
+          <file leaf-file-name="gamelist.json" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/gamelist.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.42436975" vertical-offset="13871" max-vertical-offset="138720">
+                <state vertical-scroll-proportion="1.9423077" vertical-offset="13871" max-vertical-offset="138720">
                   <caret line="918" column="19" selection-start-line="918" selection-start-column="17" selection-end-line="918" selection-end-column="19" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.25862068" vertical-offset="0" max-vertical-offset="290">
+                  <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -193,6 +203,7 @@
         <option value="$PROJECT_DIR$/app/scripts/directives/gameListing/gameListingFilter.directive.js" />
         <option value="$PROJECT_DIR$/app/filters.json" />
         <option value="$PROJECT_DIR$/app/scripts/directives/gameListing.directive.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -657,12 +668,12 @@
       <option name="number" value="Default" />
       <updated>1429665776797</updated>
       <workItem from="1429665776802" duration="13385000" />
-      <workItem from="1429737365004" duration="2115000" />
+      <workItem from="1429737365004" duration="2292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15500000" />
+    <option name="totallyTimeSpent" value="15677000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -1583,8 +1594,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/gamelist.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.42436975" vertical-offset="13871" max-vertical-offset="138720">
+        <state vertical-scroll-proportion="1.9423077" vertical-offset="13871" max-vertical-offset="138720">
           <caret line="918" column="19" selection-start-line="918" selection-start-column="17" selection-end-line="918" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25862068" vertical-offset="0" max-vertical-offset="290">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
           <folding />
         </state>
       </provider>
