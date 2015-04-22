@@ -1,5 +1,5 @@
 angular.module('ea')
-  .directive('gameListing', function () {
+  .directive('gameListingFilter', function () {
     return {
       restrict: 'E',
       templateUrl: 'templates/gameListing/gameListingFilter.directive.html',
