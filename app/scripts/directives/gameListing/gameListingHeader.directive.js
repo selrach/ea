@@ -2,7 +2,7 @@ angular.module('ea')
   .directive('gameListing', function () {
     return {
       restrict: 'E',
-      templateUrl: 'templates/gameListing/gameListingHeader.directive.html',
+      templateUrl: 'views/templates/gameListing/gameListingHeader.directive.html',
       replace: true,
       scope: {
         options: '='

@@ -16,6 +16,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.loadNpmTasks('grunt-pure-grids');
+  grunt.loadNpmTasks('grunt-html2js');
 
   // Configurable paths for the application
   var appConfig = {
@@ -163,6 +164,16 @@ module.exports = function (grunt) {
           lg: 'screen and (min-width: 64em)',   // 1024px
           xl: 'screen and (min-width: 80em)'    // 1280px
         }
+      }
+    },
+
+    html2js: {
+      options: {
+        // custom options, see below
+      },
+      main: {
+        src: ['src/templates/**/*.html'],
+        dest: 'scripts/templates.js'
       }
     },
 
@@ -470,6 +481,7 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
+    'html2js',
     'concat',
     'ngAnnotate',
     'copy:dist',
