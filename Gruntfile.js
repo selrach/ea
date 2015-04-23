@@ -59,8 +59,8 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
+          '<%= yeoman.app %>/**/*.html',
+          '.tmp/styles/**/*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
@@ -126,7 +126,9 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/**/*.js'
+          '<%= yeoman.app %>/scripts/controllers/**/*.js',
+          '<%= yeoman.app %>/scripts/directives/**/*.js',
+          '<%= yeoman.app %>/scripts/app.js'
         ]
       },
       test: {
@@ -153,16 +155,18 @@ module.exports = function (grunt) {
     },
 
     pure_grids: {
-      dest : 'build/public/css/main-grid.css',
+      responsive: {
+        dest: 'app/styles/pure/main-grid.css',
 
-      options: {
-        units: 12, // 12-column grid
-
-        mediaQueries: {
-          sm: 'screen and (min-width: 35.5em)', // 568px
-          md: 'screen and (min-width: 48em)',   // 768px
-          lg: 'screen and (min-width: 64em)',   // 1024px
-          xl: 'screen and (min-width: 80em)'    // 1280px
+        options: {
+          units: 12, // 12-column grid
+          mediaQueries: {
+            xs: 'screen and (min-width: 25em)', // 400px
+            sm: 'screen and (min-width: 35.5em)', // 568px
+            md: 'screen and (min-width: 48em)',   // 768px
+            lg: 'screen and (min-width: 64em)',   // 1024px
+            xl: 'screen and (min-width: 80em)'    // 1280px
+          }
         }
       }
     },
@@ -172,8 +176,8 @@ module.exports = function (grunt) {
         // custom options, see below
       },
       main: {
-        src: ['src/templates/**/*.html'],
-        dest: 'scripts/templates.js'
+        src: ['app/templates/**/*.html'],
+        dest: 'app/scripts/templates.js'
       }
     },
 
@@ -189,7 +193,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
+          src: '**/*.css',
           dest: '.tmp/styles/'
         }]
       },
@@ -197,7 +201,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
+          src: '**/*.css',
           dest: '.tmp/styles/'
         }]
       }
@@ -294,7 +298,7 @@ module.exports = function (grunt) {
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+      css: ['<%= yeoman.dist %>/styles/**/*.css'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
@@ -303,32 +307,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-
-    // The following *-min tasks will produce minified files in the dist folder
-    // By default, your `index.html`'s <!-- Usemin block --> will take care of
-    // minification. These next options are pre-configured if you do not wish
-    // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
 
     imagemin: {
       dist: {
@@ -417,7 +395,7 @@ module.exports = function (grunt) {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
-        src: '{,*/}*.css'
+        src: '**/*.css'
       }
     },
 
@@ -454,16 +432,12 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'pure_grids',
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
       'watch'
     ]);
-  });
-
-  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
   });
 
   grunt.registerTask('test', [
@@ -478,10 +452,12 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'pure_grids',
+    'html2js',
+    'copy:styles',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
-    'html2js',
     'concat',
     'ngAnnotate',
     'copy:dist',
@@ -497,5 +473,9 @@ module.exports = function (grunt) {
     'newer:jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('testGrunt',[
+    'html2js'
   ]);
 };

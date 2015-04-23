@@ -1,57 +1,61 @@
+'use strict';
+
 angular.module('ea')
   .directive('gameListing', function () {
     return {
       restrict: 'E',
       templateUrl: 'templates/gameListing.directive.html',
+      replace: true,
       scope: {},
       controller: function ($scope, $http) {
 
-        $scope.master_game_list = [];
-        $scope.game_list = [];
+        $scope.master_game_list = []; // Container for all the games available to display.
+        $scope.game_list = []; //Static view of games available to display selected from the master game list due to options.
         $scope.options = {}; // Initially empty, implies show everything
-        $scope.potential_options = {}
+        $scope.filters = {}; // We are letting the server determine the filters available.
+
 
         /**
-         * Sets an option to filter on.  null value implies the option should be cleared
-         * @param option_name
-         * @param value
+         * Set up watch for us to automatically do filtering if the set filters change.
          */
-        $scope.setOption = function (option_name, value) {
-          if (_.isNull(value) || _.isUndefined(value)) {
-            delete $scope.options[option_name];
-          } else {
-            $scope.options[option_name] = value;
-          }
-        }
+        $scope.$watch(function (scope) {
+            return scope.options;
+          },
+          filter);
+
+        getGameListing();
+        getFilterOptions();
 
         /**
          * Filters the current master game list and sets the slice of the filter to the game_list
          */
-        $scope.filter = function () {
+        function filter() {
           $scope.game_list = _.filter($scope.master_game_list, $scope.options)
         };
 
         /**
          * This is just a shortcut to use an already curated json value blob...that said since there is less than 700, this is pretty small in size.
+         * @returns the promise associated with the request.
          */
         function getGameListing() {
           return $http.get('gamelist.json').success(function (result) {
             $scope.master_game_list = result;
-            $scope.filter();
+            filter();
             return result;
           });
         }
 
+        /**
+         * Shortcut to grab a set of server determined filters.
+         * @returns the promise associated with the request.
+         */
         function getFilterOptions() {
           return $http.get('filters.json').success(function (result) {
-            $scope.potential_options = result;
-            $scope.filter();
+            $scope.filters = result;
             return result;
           });
         }
 
-        getGameListing();
-        getFilterOptions();
       }
     }
   });

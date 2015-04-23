@@ -1,15 +1,16 @@
-<div id="game-listing-filter" class="pure-menu pure-menu-horizontal">
+<div id="game-listing-filter" class="pure-menu">
   <ul class="pure-menu-list">
-    <li data-ng-repeat="filter in filters" class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-      <span data-ng-bind="filter.none"
+    <li data-ng-repeat="filter in processed_filters"
+        class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+      <span data-ng-bind="filter.name"
             data-ng-if="!filter.selected"></span>
       <span data-ng-bind="filter.selected"
             data-ng-if="filter.selected"></span>
       <ul class="pure-menu-children">
         <li data-ng-repeat="option in filter.options"
-            data-ng-bind="option.name"
             data-ng-click="selectFilter(filter,option)"
-            class="pure-menu-item"></li>
+            class="pure-menu-item"><span
+              data-ng-bind="option" data-ng-if="option"></span><span data-ng-if="!option"><em>Clear</em></span></li>
       </ul>
     </li>
   </ul>

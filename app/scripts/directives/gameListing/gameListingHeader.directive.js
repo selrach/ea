@@ -1,9 +1,10 @@
+'use strict';
+
 angular.module('ea')
   .directive('gameListingHeader', function () {
     return {
       restrict: 'E',
       templateUrl: 'templates/gameListing/gameListingHeader.directive.html',
-      replace: true,
       scope: {
         options: '='
       },
