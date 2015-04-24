@@ -47,6 +47,7 @@ This is where you can run your code from.
 
 ## See it on your computer.
 
+If I've sent you a zip file, I've provided the built application inside the zip file.
 All you have to do is open dist/index.html in a browser of your choice.  I've packaged up the data so that it can run 
 as a local application.  Please note that this is just a sample application that applies a bit better responsive design
 than the current site.  I have not done much work on the header or footer elements, they are primarily there just so
