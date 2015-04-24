@@ -58,7 +58,8 @@ Styles specific to the display of the game grid.
         transform: translate(-55%, -50%);
       }
     }
-    &:hover .nifty_slide {
+    &:hover .nifty_slide,
+    &:focus .nifty_slide{
       transition: 0.5s;
       left: 0;
       img {

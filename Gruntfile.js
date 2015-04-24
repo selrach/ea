@@ -450,6 +450,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'pure_grids',
+      'html2js',
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',

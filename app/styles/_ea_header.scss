@@ -8,11 +8,13 @@ Simplified emulation of the header bar for the EA Games site.
 
 .header {
   .navigation {
-    max-width: 40em;
+    max-width: 45em;
     background: $secondary-color;
     box-shadow: 1px 2px 5px $primary-color;
+    margin-top: 1em;
+    overflow: visible;
     .navbar-header {
-      position:absolute;
+      position: absolute;
       background: url('http://web-static.ea.com/atlas/ui/1416866790/skin/basiq/img/header-logo-bg.png?_sw=1416866790');
       width: 92px;
       height: 100px;
@@ -30,7 +32,7 @@ Simplified emulation of the header bar for the EA Games site.
       cursor: pointer;
       position: relative;
       height: 64px;
-      width: 6em;
+      width: 7em;
       margin-right: 4px;
       text-align: center;
       vertical-align: middle;
@@ -60,7 +62,76 @@ Simplified emulation of the header bar for the EA Games site.
       }
     }
 
+    .more_menu {
+      position: relative;
+      display: none;
+    }
   }
+}
+
+@media screen and (max-width: 48em) {
+  .header {
+    .navigation {
+      .pure-menu {
+        z-index: 100;
+        background: $secondary-color;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+      .pure-menu-horizontal ul.pure_menu_list {
+        margin: 0;
+        margin-top: 5px;
+        padding-left: 1px;
+        & > li {
+          height: 30px;
+          .navbar-header {
+            z-index: 102;
+            top: -30px;
+          }
+        }
+      }
+      .more_menu {
+        z-index: 101;
+        position: fixed;
+        top: 45px;
+        right: 22px;
+        width: 0.5em;
+        display: block;
+        color: lighten($accent-color, 30%);
+        font-size: 0.75em;
+      }
+    }
+  }
+  .container {
+    margin-top: 75px;
+  }
+
+  .navigation {
+    .pure-menu-horizontal {
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    .pure-menu-horizontal .pure-menu-list {
+      display: inline-block;
+    }
+
+    .pure-menu-horizontal {
+      white-space: nowrap;
+      overflow-y: hidden;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      /* a little extra padding for this style to allow for scrollbars */
+      padding: .5em 0;
+    }
+
+    .pure-menu-horizontal::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
 }
 
 .footer {

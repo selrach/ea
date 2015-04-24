@@ -42,7 +42,7 @@ This is where the original data source rip resides.
 
 dist/
 
-This is where you can run your code from.
+This is where the compiled code resides, you can just open index.html within this directory to see the proof of concept.
 
 
 ## See it on your computer.
@@ -62,9 +62,10 @@ you can orient yourself a bit better.
 ## Build & development
 
 To build this out you will need to install npm.  You can then run
-
+```
 npm install
 bower install
+```
 
 to get the rest of the application dependencies set up.
 
