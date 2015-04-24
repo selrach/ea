@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name ea.directive:gameListingHeader
+ * @description
+ * # gameListingHeader
+ * Header information display.  Basically decides based on the filter(s) selected what the title should be.
+ */
 angular.module('ea')
   .directive('gameListingHeader', function () {
     return {
@@ -9,14 +16,6 @@ angular.module('ea')
         options: '='
       },
       controller: function ($scope) {
-        $scope.subtitle = '';
-        updateSubtitle();
-
-        //Set up a watch on the options array, if this changes, we want to evaluate the options to see what should be displayed
-        $scope.$watch(function (scope) {
-            return scope.options;
-          },
-          updateSubtitle)
 
         /**
          * Updates the subtitle based on some simple rules.  These business rules could be coming from the server
@@ -25,7 +24,8 @@ angular.module('ea')
           if (_.isEmpty($scope.options)) {
             $scope.subtitle = 'All';
           } else {
-            $scope.subtitle = $scope.options['genre'] || $scope.options['platform'] || $scope.options['franchise'];
+            //Simple precedence, only set up to display one of the currently selected filter values.
+            $scope.subtitle = $scope.options.platform || $scope.options.genre || $scope.options.franchise;
             if(_.isEmpty($scope.subtitle)) {
               $scope.subtitle = 'Other';
             } else {
@@ -34,6 +34,15 @@ angular.module('ea')
           }
           $scope.subtitle += ' Games';
         }
+
+        $scope.subtitle = '';
+        updateSubtitle();
+
+        //Set up a watch on the options array, if this changes, we want to evaluate the options to see what should be displayed
+        $scope.$watch(function (scope) {
+            return scope.options;
+          },
+          updateSubtitle, true);
       }
     };
   });

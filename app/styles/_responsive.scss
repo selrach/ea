@@ -1,0 +1,21 @@
+/*
+_responsive.scss
+
+Media queries to help set up the container sizing on various browser widths
+*/
+
+
+@media screen and (min-width: 48em) {
+  .container {
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
+@media screen and (min-width: 72em) {
+  .container {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}

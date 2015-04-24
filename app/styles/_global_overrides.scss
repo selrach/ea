@@ -1,0 +1,35 @@
+/*
+_global_overrides.scss
+Global css overrides
+*/
+
+
+//Overrides for pure
+.pure-g > div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.l-box {
+  padding: 1em;
+}
+
+//Global overrides
+
+a {
+  color: $accent-color;
+  font-size: 0.9em;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+h1 {
+  font-size: 3rem;
+  margin: 0.3rem 0;
+}
+h2 {
+  font-size: 1rem;
+  margin: 0.1rem 0;
+}

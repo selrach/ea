@@ -8,6 +8,7 @@ require 'json'
 OptionParser.new do |opts|
   opts.banner = "Usage: transform.rb [options]"
   opts.on('-s', '--source FILENAME', 'Source html snippet') { |v| @options[:source_filename] = v }
+  opts.on('-t', '--test [true]', 'replace images with test image paths') { |v| @options[:test] = true }
 end.parse!
 
 def random_platform
@@ -52,8 +53,10 @@ game_list_document.css('li').each do |game_node|
     initial_link = links.shift
     elem = game_node.at_css('img.first')
     thumbnail_link = elem[:src] unless elem.nil?
+    thumbnail_link = 'images/test_thumbnail.jpg' if @options[:test]
     elem = game_node.at_css('img.last')
     logo_link = elem[:src] unless elem.nil?
+    logo_link = 'images/test_logo.png' if @options[:test]
     game_list.push({
                      :name => initial_link[:title],
                      :link => initial_link[:href],
@@ -71,7 +74,7 @@ game_list_document.css('li').each do |game_node|
                                                                :name => the_link.content,
                                                                :link => the_link[:href]
                                                              })
-      game_list[game_list.length - 1][:franchise] = the_link[:href]
+      game_list[game_list.length - 1][:franchise] = the_link[:href][1..-1]
     end
   end
 end

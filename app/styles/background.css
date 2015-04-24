@@ -1,0 +1,50 @@
+/* Basic background styles taken directly from the ea site */
+
+/*
+
+  Might be fun to do this with a gradient.
+
+  background-image: linear-gradient(45deg, #DDD 25%, transparent 25%, transparent 75%, #DDD 75%, #DDD),
+  linear-gradient(45deg, #DDD 25%, transparent 25%, transparent 75%, #DDD 75%, #DDD);
+  background-size:3px 3px;
+  background-position:0 0, 1px 1px
+
+
+  However in firefox, this is really slow for now.
+*/
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #E8E8E8;
+  background-image: url("http://web-static.ea.com/atlas/ui/1429302377/skin/basiq/img/bg-v.png?_sw=1429302377");
+  background-repeat: repeat-y;
+  background-attachment: scroll;
+  background-position: center top;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-size: auto auto;
+
+}
+
+.hk-bg {
+  position: fixed; /* Slight difference since I want the texture to apply to the entire height on phones */
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Scrolling issue in chrome because this gets placed on top of scrollable areas */
+  width: 100%;
+  height: 836px;
+  overflow: hidden;
+  background-color: transparent;
+  background-image: url("http://web-static.ea.com/atlas/ui/1429302377/skin/basiq/img/bg.png?_sw=1429302377");
+  background-repeat: repeat-x;
+  background-attachment: scroll;
+  background-position: 0 0;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-size: auto auto;
+}

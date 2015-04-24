@@ -5,4 +5,5 @@ dist
 bower_components
 .idea
 app/scripts/templates.js
+app/scripts/json.js
 ea.iml

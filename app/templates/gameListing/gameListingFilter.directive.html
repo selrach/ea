@@ -4,12 +4,12 @@
         class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
       <span data-ng-bind="filter.name"
             data-ng-if="!filter.selected"></span>
-      <span data-ng-bind="filter.selected"
-            data-ng-if="filter.selected"></span>
+      <span data-ng-if="filter.selected"
+        ><em data-ng-bind="filter.selected"></em></span>
       <ul class="pure-menu-children">
         <li data-ng-repeat="option in filter.options"
             data-ng-click="selectFilter(filter,option)"
-            class="pure-menu-item"><span
+            class="pure-menu-item" data-ng-if="option || filter.selected"><span
               data-ng-bind="option" data-ng-if="option"></span><span data-ng-if="!option"><em>Clear</em></span></li>
       </ul>
     </li>

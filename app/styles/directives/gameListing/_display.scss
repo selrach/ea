@@ -1,0 +1,70 @@
+/*
+styles/directives/gameListing/_display.scss
+Styles specific to the display of the game grid.
+*/
+
+@media screen and (min-width: 35.5em) {
+  #game-listing-display {
+    height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+#game-listing-display {
+  position: relative;
+  background-color: $secondary-color;
+  .card {
+    text-align:center;
+    >*{
+      display: inline-block;
+      text-align:left;
+      max-width: 298px; // This is as big as the images really get and we want to wrap long titles.
+      width: 100%;
+    }
+  }
+  .game-title {
+    display: block;
+    color: $primary-color;
+    font-size: 1.2em;
+    &:hover {
+      color: $accent-color;
+    }
+  }
+  .release-date {
+    font-size: 0.7em;
+  }
+
+  .nifty_slide_wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 100%;
+    .nifty_slide {
+      background-color: rgba(30, 30, 30, 0.6);
+      position: absolute;
+      left: -500px;
+      top: 0;
+      width: 100%;
+      max-width: 298px;
+      height: 100%;
+      transition: 0.5s;
+      img {
+        position: absolute;
+        max-width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-55%, -50%);
+      }
+    }
+    &:hover .nifty_slide {
+      transition: 0.5s;
+      left: 0;
+      img {
+
+      }
+    }
+
+  }
+}

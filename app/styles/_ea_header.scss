@@ -1,0 +1,70 @@
+/*
+scripts/ea_header.scss
+Simplified emulation of the header bar for the EA Games site.
+*/
+
+// ea logo part 1 http://web-static.ea.com/atlas/ui/1416866790/skin/basiq/img/header-logo-bg.png?_sw=1416866790
+// ea logo part 2 http://web-static.ea.com/atlas/ui/1416866790/skin/basiq/img/logo.png?_sw=1416866790
+
+.header {
+  .navigation {
+    max-width: 40em;
+    background: $secondary-color;
+    box-shadow: 1px 2px 5px $primary-color;
+    .navbar-header {
+      position:absolute;
+      background: url('http://web-static.ea.com/atlas/ui/1416866790/skin/basiq/img/header-logo-bg.png?_sw=1416866790');
+      width: 92px;
+      height: 100px;
+      top: -16px;
+      display: inline-block;
+      position: relative;
+      .navbar-brand {
+        background: url('http://web-static.ea.com/atlas/ui/1416866790/skin/basiq/img/logo.png?_sw=1416866790');
+      }
+    }
+
+    .pure-menu-horizontal ul.pure_menu_list > li {
+      background-color: $secondary-color;
+      color: $primary-color;
+      cursor: pointer;
+      position: relative;
+      height: 64px;
+      width: 6em;
+      margin-right: 4px;
+      text-align: center;
+      vertical-align: middle;
+      text-transform: uppercase;
+      font-size: .9rem;
+      &.active {
+        border: solid 1px lighten($primary-color, 80%);
+        background-color: lighten($accent-color, 50%);
+      }
+      &:hover {
+        background-color: lighten($accent-color, 48%);
+      }
+      a {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 99%;
+        height: 99%;
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: inline-block;
+        }
+      }
+    }
+
+  }
+}
+
+.footer {
+  text-align: center;
+  padding-top: 0.5em;
+  font-size: 1.5em;
+}

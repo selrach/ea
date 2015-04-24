@@ -17,6 +17,8 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-pure-grids');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-json');
+
 
   // Configurable paths for the application
   var appConfig = {
@@ -48,7 +50,7 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= yeoman.app %>/styles/**/*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
       },
       gruntfile: {
@@ -173,11 +175,26 @@ module.exports = function (grunt) {
 
     html2js: {
       options: {
+        base: 'app'
         // custom options, see below
       },
       main: {
-        src: ['app/templates/**/*.html'],
+        src: ['app/templates/**/*.html','app/views/**/*.html'],
         dest: 'app/scripts/templates.js'
+      }
+    },
+
+    json: {
+      main: {
+        options: {
+          namespace: 'faux_server',
+          includePath: true,
+          processName: function(filename) {
+            return filename.toLowerCase();
+          }
+        },
+        src: ['app/*.json'],
+        dest: 'app/scripts/json.js'
       }
     },
 
@@ -453,6 +470,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'wiredep',
     'pure_grids',
+    'json',
     'html2js',
     'copy:styles',
     'useminPrepare',
@@ -466,7 +484,7 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
   ]);
 
   grunt.registerTask('default', [

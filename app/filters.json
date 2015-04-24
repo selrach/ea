@@ -1,15 +1,15 @@
 {
-  "genre": [
-    "action",
-    "shooting",
-    "horror",
-    "unknown"
-  ],
   "platform": [
     "pc",
     "mobile",
     "xbox",
     "playstation"
+  ],
+  "genre": [
+    "action",
+    "shooting",
+    "horror",
+    "unknown"
   ],
   "franchise": [
     "fifa",
